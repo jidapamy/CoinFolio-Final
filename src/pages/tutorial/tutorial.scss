@@ -1,0 +1,64 @@
+page-tutorial {
+
+ .skips{
+     font-size: 15px;
+     color:#F7A200;
+    // text-align: left;
+    float: left
+ }   
+    ion-content {
+    background-color: #EFEFEF !important;
+    font-family:'Raleway';
+}
+.diag {
+  position: absolute;
+  z-index: 1;
+  width:100%;
+  top: 0;
+  height:66%;
+}
+
+ion-icon {
+    margin-top: 40%;
+    font-size:7em;
+}
+
+h2 {
+    margin-top:80% !important;
+    font-weight:bold;
+    font-size:1em;
+}
+
+p {
+    width:80%;
+    display:block;
+    margin: 0 auto;
+    font-size:.9em;
+}
+
+.swiper-pagination-bullet-active {
+    background:#F0B90B;
+}
+
+.swiper-pagination {
+    bottom: 1% !important;
+}
+
+#skip {
+    position:absolute;
+    bottom: 95%;
+    left:1%;
+    width:100%;
+    background:none !important;
+    text-align:center;
+    cursor:pointer;
+    font-family: 'Copse', serif;
+    z-index:5;
+}
+$colors: (
+  primary:    #F0B90B,
+  
+);    
+
+
+}

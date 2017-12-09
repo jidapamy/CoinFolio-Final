@@ -1,0 +1,77 @@
+<!--
+  Generated template for the CoinsDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-buttons left (click)="goToFolio()">
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Holdings</ion-title>
+
+    <ion-buttons right (click)="screenShot()">
+      <button ion-button icon-only>
+        <ion-icon  name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list style="background-color: #111314;padding-top: 10px;margin-top: 0px;margin-bottom: 0px;" (click)="gotoGraph()">
+      <ion-item style="background-color: #111314">
+        <ion-label class="fixedLeft topic">{{ crypto.myCoins.coin.secondary_currency }}/{{crypto.myCoins.coin.primary_currency}} Summary</ion-label>
+        <ion-label class="fixedRightEnd">
+          <p style="color:rgb(131, 131, 131);font-size: 13px">Profit / Lost*</p>
+          <button *ngIf="result<0" class="priceMinusSumary">{{result}} THB</button>
+          <button *ngIf="result>=0" class="pricePlusSumary">{{result}} THB</button>
+        </ion-label>
+      </ion-item>
+      <ion-item style="padding-top: 4px;padding-bottom: 8px;background-color: #111314">
+        <ion-label class="fixedfirst">
+          <p class="detailTopic">Holdings</p>
+          <p class="detailContent">{{ crypto.myCoins.totalQuantity}}</p>
+        </ion-label>
+        <ion-label class="fixedMiddle">
+          <p class="detailTopic">Market Value</p>
+          <p class="detailContent">{{marketValue}} THB</p>
+        </ion-label>
+        <ion-label class="fixedLast" >
+          <p class="detailTopic">Net Cost*</p>
+          <p class="detailContent">{{crypto.myCoins.totalPrice}} THB</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-grid style="border-bottom:0.5px solid rgba(255, 255, 255, 0.07)" *ngFor="let transaction of transactionList" (click)="goTOEditTransactionPage(transaction)">
+        <ion-row>
+          <ion-col class="fixedfirst">
+            <p class="toppicSummary">{{transaction.status}}</p>
+            <p [ngClass]="{buyType:transaction.status=='Buy'}" *ngIf="transaction.status == 'Buy'">{{transaction.quantity}}</p>
+            <p [ngClass]="{sellType:transaction.status=='Sell'}"  *ngIf="transaction.status == 'Sell'">{{transaction.quantity}}</p>
+          </ion-col>
+          <ion-col class="fixedMiddle">
+              <p class="toppicSummary">Price</p>
+              <p class="detailSummary">{{transaction.tradePrice}} THB</p>
+          </ion-col>
+          <ion-col class="fixedLast">
+            <p class="toppicSummary" *ngIf="transaction.status == 'Buy'">Cost</p>
+            <p class="toppicSummary" *ngIf="transaction.status == 'Sell'">Proceeds</p>
+            <p class="detailSummary">{{transaction.total}} THB</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="dateSummary">
+            {{transaction.date}}
+          </ion-col>
+        </ion-row> 
+    </ion-grid>
+  <br>
+  <ion-icon style="text-align:center;font-size:29px;color:#bfbfbf;padding-left:48%;" name="add-circle" (click)="goTOAddTransationPage()"></ion-icon>
+
+</ion-content>

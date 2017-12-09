@@ -38,8 +38,17 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  bgdark: #151A1D,
+  bglight: #262D33,
+  bgyellow: #F0B90B,
+  bggreen: #74A700,
+  bgred: #E3036F,
+  bgblue:#13191D,
+  bgToolbar:#111314
+
 );
+$text-input-md-highlight-color:()#F0B90B;
 
 
 // App iOS Variables

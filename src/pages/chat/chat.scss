@@ -1,0 +1,94 @@
+
+page-chat {
+  .content{
+        color: #FFFFFF;
+        background-color: #151A1D;
+        // background-color: #05191d;
+        font-size:16px;
+  }
+  .menu.menu-left{
+    width: calc(100% - 70px) !important;
+  }
+  .menu-open .menu-content{
+    transform: translate3d(calc(100% - 70px), 0px, 0px) !important;
+  }
+
+  // .dark{
+  //   color:#2E2E2E;
+  //   background-color:#2E2E2E;
+  //   color:white;
+  // }
+
+  .nameCoinsSet{
+  	white-space: normal !important;
+   	color:#A4A4A4;
+    font-size:13px;
+    padding-right: 14px;
+  }
+
+  input {
+    width: 96%;
+    box-sizing: border-box;
+    border: 0px solid white,;
+    font-size: 14px;
+    background-color: white; 
+    padding: 8px 8px 8px 10px;
+    color : #2E2E2E;
+
+    flex-grow:2;
+
+  }
+
+  button{
+	 background-color:#F0B90B;
+	 padding: 4px 7px 4px 7px;
+   font-size:20px;
+   border-radius: 0px
+	 
+  }
+
+  // ion-footer{
+  // 	position: fixed;
+  //   bottom: 48px;
+  // }
+
+  .list {
+    margin: 0px; 
+  }
+
+  .positionChat{
+  	color:#2E2E2E;
+    background-color:#151A1D;
+    color:white;
+  	margin:-12px;
+  	padding-left: 13px;
+  }
+
+  .username{
+    color:#F0B90B;
+    margin: 1%;
+  	margin-left: 2.5%;
+  	font-size: 15px;
+
+  }
+
+  .iconUser{
+  	margin-right: 3px;
+  	font-size:25px;
+  }
+
+  .error{
+    color:#f53d3d;
+    font-size: 10px;
+    margin-left: 2.5%;
+  }
+
+  form{
+    display:flex;
+    margin: 2%;
+    margin-bottom: 0%;
+    margin-top: 1%;
+
+
+  }
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <button end ion-button menuToggle>
+      <ion-icon name="md-more"></ion-icon>
+    </button>
+    <ion-title style="padding-left: 12%;">My Folio</ion-title>
+  </ion-navbar>
+  <page-header></page-header>
+  <ion-grid class="headerGird">
+    <ion-row>
+      <ion-col class="coin">COIN</ion-col>
+      <ion-col class="holding">HOLDING</ion-col>
+      <ion-col class="price">PRICE</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding #slidingItem *ngFor="let crypto of cryptoRecent">
+      <ion-item style="padding-right: 2%;" (click)="openDetailsPage(crypto)">
+        <ion-label class="fixedLeft" style="margin: 0;">
+          <ion-avatar item-start>
+            <img class="imgSize" src="https://d2v7vc3vnopnyy.cloudfront.net/img/coins/{{ crypto.myCoins.coin.secondary_currency }}.png"
+              alige="bottom" />
+            <p class="fontsize bottons">{{ crypto.myCoins.coin.secondary_currency }}/{{ crypto.myCoins.coin.primary_currency }}</p>
+          </ion-avatar>
+        </ion-label>
+        <ion-label class="fixedMiddle">
+          {{ crypto.myCoins.totalPrice }} THB<br> {{ crypto.myCoins.totalQuantity }}
+        </ion-label>
+        <ion-label class="fixedRight">
+          <span [ngClass]="{rateCurrency:crypto.change<0}">
+                {{crypto.cryptoCurrency.last_price}} {{crypto.cryptoCurrency.primary_currency}}
+            <br>
+           <span *ngIf="crypto.cryptoCurrency.change<0" [ngClass]="{ratedownCurrency:crypto.cryptoCurrency.change<0}">
+                  {{crypto.cryptoCurrency.change}}%
+                  <span><ion-icon name="md-arrow-dropdown"></ion-icon></span>
+          </span>
+          <span *ngIf="crypto.cryptoCurrency.change>=0" [ngClass]="{rateupCurrency:crypto.cryptoCurrency.change>=0}">
+                <span> +{{crypto.cryptoCurrency.change}}% </span>
+          <ion-icon name="md-arrow-dropup"></ion-icon>
+          </span>
+          </span>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="right" class="dark">
+        <button ion-button icon-only (click)="removeFavorite(slidingItem,crypto)" color="danger">
+				 	 	<ion-icon name="ios-trash"></ion-icon>
+				 	</button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

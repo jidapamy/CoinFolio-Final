@@ -14,3 +14,85 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.button-block {
+    display: block;
+    clear: both;
+    width: 95%;
+    contain: strict;
+    margin-left: 8px;
+    margin-right: 0;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+.sizeimg{
+    width: 20%;
+    height: 10%;
+}
+
+.bar-button, .bar-button-default.bar-button, .bar-button-clear {
+    color: #FFB405;
+    // background-color: transparent;
+    font-size: 19px;
+}
+.toolbar-background{
+    border-color: #b2b2b2;
+    background: #111314;
+}
+.toolbar-title {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.ratedownCurrency{
+    color:#E3036F;
+}
+
+.rateupCurrency{
+    color:#74A700;
+}
+
+.content{
+        color: #FFFFFF;
+        background-color: rgb(23, 25, 26);
+        // background-color: #05191d;
+        font-size:16px;
+  }
+
+//   .item{
+//     padding-left: 16px;
+//     padding-right: 0;
+//     width: 94%;
+//     position: relative;
+//     font-size: 1.6rem;
+//     font-weight: normal;
+//     text-transform: none;
+//     color: white;
+//     font-weight: 500;
+//     background-color: #17191a;
+//     -webkit-box-shadow: none;
+//     box-shadow: none;
+//     -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+//     transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+// }
+
+    .designItem{
+        padding-right: 16px;
+        color: white;
+        font-weight: 500;
+        background-color: #17191a;
+    }
+
+.list .item-block .item-inner {
+    border-bottom: 1px solid rgba(222, 222, 222, 0.18);
+}
+
+.iconFix{
+     min-width: 7% !important;
+     max-width: 7% !important;
+}
+
+.item-md.activated{
+    background-color: rgb(215, 164, 43);
+   
+}

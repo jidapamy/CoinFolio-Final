@@ -2,5 +2,17 @@
   "name": "Coinfolio_final",
   "app_id": "560c5ea7",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://bx.in.th/api"
+    },
+    {
+      "path": "/orderbook/?pairing=1",
+      "proxyUrl": "https://bx.in.th/api/orderbook/?pairing=1"
+    }
+  ]
 }

@@ -1,0 +1,91 @@
+<!--
+  Generated template for the AddTransationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons end (click)="goBack()">
+      <button ion-button>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Add Transaction</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form class="list" [formGroup]="addTransactionForm" (ngSubmit)="saveTransaction()">
+    <ion-list>
+      <ion-item>
+        <ion-label class="fixedLeft">
+          Trading Pair
+        </ion-label>
+        <ion-label class="fixedRight">
+          {{ crypto.secondary_currency }}/{{crypto.primary_currency}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Status
+        </ion-label>
+        <ion-select (ionChange)="chooseStatus()" interface="popover" formControlName="status">
+          <ion-option color="bgyellow" value="Buy">BUY</ion-option>
+          <ion-option value="Sell">SELL</ion-option>
+          <ion-option value="Watch">WATCH ONLY</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-item>
+        <ion-label class="fixedLeft">Current Price</ion-label>
+        <ion-label class="fixedRight"><img class="imgSize" src="https://d2v7vc3vnopnyy.cloudfront.net/img/coins/{{crypto.secondary_currency}}.png" />&nbsp;&nbsp;{{
+          crypto.secondary_currency }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="fixedLeft">
+          Trade Price <br>
+          <span style="font-size: 10px;color: #e13838;">{{errorTradePrice}}</span>
+        </ion-label>
+        <ion-input *ngIf="addTransactionForm.value.status!='Watch'" class="fixedRight" (keyup)="keyUp('price')" [(ngModel)]="price" item-right type="number" placeholder="Enter Trade Price"
+           min="0" value="{{crypto.last_price}}" formControlName="tradePrice"></ion-input>
+        <ion-input *ngIf="addTransactionForm.value.status=='Watch'" class="fixedRight" disabled item-right type="number"
+          value="{{crypto.last_price}}" formControlName="tradePrice"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="fixedLeft">
+          Enter Quantity <br>
+          <span style="font-size: 10px;color: #e13838;">{{errorQuantity}}</span>
+        </ion-label>
+        <ion-input *ngIf="addTransactionForm.value.status!='Watch'" class="fixedRight" (keyup)="keyUp('quantity')" [(ngModel)]="quantity" formControlName="quantity"
+          item-right min="0" type="number" placeholder="Enter Quantity" value=0></ion-input>
+        <ion-input *ngIf="addTransactionForm.value.status=='Watch'" disabled class="fixedRight" formControlName="quantity"
+          item-right type="number" value=0></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fixedLeft">Total Value</ion-label>
+        <ion-label class="fixedRight"> {{addTransactionForm.value.tradePrice * addTransactionForm.value.quantity}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label class="fixedLeft">Trade Date</ion-label>
+        <ion-datetime class="datetimeColor" displayFormat="MMM/DD/YYYY" pickerFormat="MMMM DD YYYY" [(ngModel)]="myDate" (ionChange)="chooseDate()"
+          formControlName="date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label class="fixedLeft">Note</ion-label>
+        <ion-input class="fixedRight" [(ngModel)]="note" formControlName="note"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <button type="submit" full ion-button color="bgyellow">Save</button>
+    </ion-list>
+  </form>
+</ion-content>
