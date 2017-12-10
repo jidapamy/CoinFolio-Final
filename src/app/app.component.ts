@@ -19,6 +19,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 
 
+
 @Component({
   templateUrl: 'app.html'
 })

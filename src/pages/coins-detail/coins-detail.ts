@@ -7,6 +7,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Screenshot } from '@ionic-native/screenshot';
 import { HomePage } from '../home/home';
+import { Platform, ActionSheetController } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { AlertController } from 'ionic-angular';
+
 /**
  * Generated class for the CoinsDetailPage page.
  *
@@ -49,7 +53,14 @@ export class CoinsDetailPage {
   coins: tempStatisticsCoinsDetail[];
 
 
-  constructor(private screenshot: Screenshot,public navCtrl: NavController, public navParams: NavParams, public provider: DatacoinProvider) {
+  constructor(
+    private alertCtrl: AlertController,
+    private socialSharing: SocialSharing,
+    public platform: Platform,
+    public actionsheetCtrl: ActionSheetController,
+    private screenshot: Screenshot,public navCtrl: NavController,
+     public navParams: NavParams, public provider: DatacoinProvider) {
+
     let paramType = this.navParams.get('type');
     
     if(paramType == 'home'){
@@ -127,6 +138,43 @@ export class CoinsDetailPage {
 
   }
   
+  openMenu() {
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Fundtion',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'ScreenShot',
+          role: 'destructive',
+          icon: 'albums' ,
+          handler: () => {
+            this.screenShot();
+          }
+        },
+        {
+          text: 'Share With Facebook',
+          icon: 'share',
+          handler: () => {
+            this.screenShotURIShareWithFacebook();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close' ,
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+  
+
+
+
+
 
   goBack() {
     this.navCtrl.pop();
@@ -141,6 +189,15 @@ export class CoinsDetailPage {
       self.state = false;
     }, 1000);
   }
+  screenShotURIShareWithFacebook() {
+    this.screenshot.URI(80).then(res => {
+      this.screen = res.URI;
+      this.state = true;
+      this.reset();
+      this.socialSharing.shareViaFacebook("By CoinFolio", null, res.URI);
+    });
+
+  }
 
   screenShot() {
     this.screenshot.save('jpg', 80).then(res => {
@@ -148,8 +205,25 @@ export class CoinsDetailPage {
       this.state = true;
       this.reset();
     });
-  }
+    let alert = this.alertCtrl.create({
 
+      subTitle: '   Save Photo Success!!',
+
+    });
+
+    setTimeout(() => {
+      alert.present().then(() => {
+        setTimeout(() => {
+          alert.dismiss();
+
+        }, 1500);
+      }).catch(() => {
+        alert.dismiss();
+      });
+    }, 0);
+
+  }
+  
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad")
