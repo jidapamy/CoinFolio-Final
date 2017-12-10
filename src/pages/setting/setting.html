@@ -21,12 +21,9 @@
     <ion-item (click)="goToFeedback()">Feedback</ion-item>
     <ion-item (click)="goToPrivacy()">Terms Of Use & Privacy</ion-item>
     <ion-item (click)=" goToTutorail()">Replay Tutorail</ion-item>
-    <ion-item>
+    <ion-item (click)="checkToggle()">
       <ion-label style="margin: 13px 8px 13px 13px;">Fingerprint</ion-label>
-      <ion-toggle checked="{{statusToggle}}" (click)="checkToggle()"></ion-toggle>
-    </ion-item>
-    <ion-item>
-       {{statusToggle}}
+      <ion-toggle checked="{{statusToggle}}"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

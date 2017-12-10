@@ -24,6 +24,8 @@ export class DatacoinProvider {
   coinsKey: any;
   mycoinsPath: any;
   transactionPath: any;
+  fingerprint:boolean;
+  fingerprintPassIntime:boolean = false;
 
   //BX Attribute
   private apiUrl = "/api";
@@ -46,6 +48,7 @@ export class DatacoinProvider {
     
     // this.setUserLogin('')
     // this.setDataTutorial(false)
+    // this.setFingerprint(false)
     this.storage.ready().then(() => {
       this.storage.get('userLogin').then((data) => {
         console.log('userLogin Provider')
@@ -57,15 +60,26 @@ export class DatacoinProvider {
       });
     });
 
+    // this.storage.ready().then(() => {
+    //   this.storage.get('Fingerprint').then((data) => {
+    //     console.log('Fingerprint Provider')
+    //     console.dir(data);
+    //     if (data) {
+    //       this.fingerprint = data;
+    //       console.log('fingerprint = ' + this.fingerprint)
+    //     }
+    //   });
+    // });
+
   }
 
   //Finger
   getFingerprint(): Promise<any> {
     return this.storage.get('Fingerprint')
   }
-  setFingerprint(data) {
-    this.storage.set('Fingerprint', data)
-    console.log(data)
+  setFingerprint(boolean) {
+    this.storage.set('Fingerprint', boolean)
+    console.log('Fingerprint Storage' + boolean)
   }
 
 
@@ -78,6 +92,9 @@ export class DatacoinProvider {
   }
 
   // User
+  registerUser(data) {
+    this.userData.push(data)
+  }
   getUserLogin(): Promise<any> {
     return this.storage.get('userLogin')
   }
@@ -92,6 +109,14 @@ export class DatacoinProvider {
       this.userKey = ''
     }
   }
+  getAllUSer() {
+    let userList: any[];
+    this.userData.subscribe(data => {
+      userList = data
+    })
+    return userList;
+  }
+
 
   // Transition & Coins
   getMycoinsPath() { //myCoin ของ User ตามที่ login

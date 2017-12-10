@@ -126,16 +126,21 @@ export class MyApp {
       console.log('statusFingerprint ' + statusFingerprint);
       if (page.component == FolioPage) {
         if (statusFingerprint) {
-          this.faio.show({
-            clientId: 'Figer',
-            clientSecret: 'password',
-            localizedFallbackTitle: 'Use Pin',
-            localizedReason: 'Please authenticate'
-          }).then((result: any) => {
+          if (this.provider.fingerprintPassIntime == false) {
+            this.faio.show({
+              clientId: 'Figer',
+              clientSecret: 'password',
+              localizedFallbackTitle: 'Use Pin',
+              localizedReason: 'Please authenticate'
+            }).then((result: any) => {
+              this.provider.fingerprintPassIntime = true;
+              this.nav.setRoot(page.component);
+            }).catch((error: any) => {
+              console.log('err: ', error);
+            });
+          } else {
             this.nav.setRoot(page.component);
-          }).catch((error: any) => {
-            console.log('err: ', error);
-          });
+          }
         } else {
           this.nav.setRoot(page.component);
         }
