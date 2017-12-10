@@ -14,6 +14,9 @@ import { AddTransactionPage } from '../add-transaction/add-transaction';
 import { CoinsDetailPage } from '../coins-detail/coins-detail';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Platform, ActionSheetController } from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the DetailsPage page.
@@ -44,6 +47,10 @@ export class DetailsPage {
   marketValue: any;
 
   constructor(
+    public actionsheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController,
+    private socialSharing: SocialSharing,
+    public platform: Platform,
     private screenshot: Screenshot,
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -119,14 +126,53 @@ export class DetailsPage {
     console.dir(this.transactionList)
   }
 
-
+  openMenu() {
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Screenshot',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Save to Gallery',
+          role: 'destructive',
+          icon: 'albums',
+          handler: () => {
+            this.screenShot();
+          }
+        },
+        {
+          text: 'Share With Email',
+          icon: 'share',
+          handler: () => {
+            this.screenShotURIShareWithEmail();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: 'close',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
   reset() {
     var self = this;
     setTimeout(function () {
       self.state = false;
     }, 1000);
   }
+  screenShotURIShareWithEmail() {
+    this.screenshot.URI(80).then(res => {
+      this.screen = res.URI;
+      this.state = true;
+      this.reset();
+      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
+    });
 
+  }
   screenShot() {
     this.screenshot.save('jpg', 80).then(res => {
       this.screen = res.filePath;

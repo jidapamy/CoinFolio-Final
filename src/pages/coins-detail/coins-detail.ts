@@ -140,11 +140,11 @@ export class CoinsDetailPage {
   
   openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
-      title: 'Fundtion',
+      title: 'Screenshot',
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'ScreenShot',
+          text: 'Save to Gallery',
           role: 'destructive',
           icon: 'albums' ,
           handler: () => {
@@ -152,10 +152,10 @@ export class CoinsDetailPage {
           }
         },
         {
-          text: 'Share With Facebook',
+          text: 'Share With Email',
           icon: 'share',
           handler: () => {
-            this.screenShotURIShareWithFacebook();
+            this.screenShotURIShareWithEmail();
           }
         },
         {
@@ -189,14 +189,14 @@ export class CoinsDetailPage {
       self.state = false;
     }, 1000);
   }
-  screenShotURIShareWithFacebook() {
+  screenShotURIShareWithEmail() {
     this.screenshot.URI(80).then(res => {
       this.screen = res.URI;
       this.state = true;
       this.reset();
-      this.socialSharing.shareViaFacebook("By CoinFolio", null, res.URI);
+      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
     });
-
+    
   }
 
   screenShot() {

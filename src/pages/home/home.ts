@@ -10,7 +10,7 @@ import { HeaderPage } from '../header/header';
 import { FolioPage } from '../folio/folio';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage'
-// import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 /**
  * Generated class for the HomePage page.
  *
@@ -35,12 +35,12 @@ export class HomePage {
   searchText: any
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    // private faio: FingerprintAIO,
+    private faio: FingerprintAIO,
     public provider: DatacoinProvider,
     public modalCtrl: ModalController,
     // private screenshot: Screenshot,
     public menuControl: MenuController,
-    public storage: Storage,) {
+    public storage: Storage, ) {
 
     // this.storage.ready().then(() => {
     //   this.storage.get('userLogin').then((data) => {
@@ -52,11 +52,11 @@ export class HomePage {
     //   });
     // });
 
-    this.provider.getUserLogin().then(data =>{
+    this.provider.getUserLogin().then(data => {
       console.dir(data)
       if (data) {
-          this.user = data
-          this.content.resize();
+        this.user = data
+        this.content.resize();
       }
     })
 
@@ -121,12 +121,12 @@ export class HomePage {
   }
 
   ngOnInit() {
-  //   this.provider.getUserLogin().then(data => {
-  //     this.user = data;
-  //     this.content.resize();
-  //     console.log('ngOnInit')
-  //     console.dir(this.user)
-  //   })
+    //   this.provider.getUserLogin().then(data => {
+    //     this.user = data;
+    //     this.content.resize();
+    //     console.log('ngOnInit')
+    //     console.dir(this.user)
+    //   })
 
     let intervel = setInterval(() => {        // fetch data BXCoin API
       if (this.cryptoTotal.length == 0) {
@@ -158,27 +158,32 @@ export class HomePage {
 
   goToMyCoins() {
     let statusStorage;
-    // this.provider.getFingerprint().then(data => {
-    //   statusStorage = data;
-    //   console.log('statusStorage ' + statusStorage)
-    //   if (statusStorage) {
-    //     this.faio.show({
-    //       clientId: 'Coinfolio-Demo',
-    //       localizedFallbackTitle: 'Use Pin',
-    //       localizedReason: 'Please authenticate'
-    //     })
-    //       .then((result: any) => {
-    //         this.navCtrl.setRoot(FolioPage);
-    //       })
-    //       .catch((error: any) => {
-    //         console.log('err: ', error);
-    //       });
-    //   } else {
-    //     this.navCtrl.setRoot(FolioPage);
-    //   }
-    // })
+    this.provider.getFingerprint().then(data => {
+      statusStorage = data;
+      console.log('statusStorage ' + statusStorage)
+      if (statusStorage) {
+        if (this.provider.fingerprintPassIntime == false) {
+          this.faio.show({
+            clientId: 'Coinfolio-Demo',
+            localizedFallbackTitle: 'Use Pin',
+            localizedReason: 'Please authenticate'
+          })
+            .then((result: any) => {
+              this.provider.fingerprintPassIntime = true;
+              this.navCtrl.setRoot(FolioPage);
+            })
+            .catch((error: any) => {
+              console.log('err: ', error);
+            });
+        } else {
+          this.navCtrl.setRoot(FolioPage);
+        }
+      } else {
+        this.navCtrl.setRoot(FolioPage);
+      }
+    })
 
-    this.navCtrl.setRoot(FolioPage);
+    // this.navCtrl.setRoot(FolioPage);
 
   }
 
