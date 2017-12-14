@@ -34,7 +34,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { Screenshot } from '@ionic-native/screenshot';
-// import { Camera, CameraOptions } from '@ionic-native/camera';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 
@@ -103,7 +102,6 @@ export const config = {
     InAppBrowser, EmailComposer,
     FingerprintAIO,
     Screenshot,
-    // Camera,
     SocialSharing
   ]
 })

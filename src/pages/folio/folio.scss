@@ -7,7 +7,6 @@ page-folio {
     .frontFixedLabel {
         min-width: 67% !important;
         max-width: 67% !important;
-        // color:rgb(255, 255, 255);
         font-weight: 500;
     }
      .aboveFixedLabel{
@@ -24,7 +23,6 @@ page-folio {
     .endFixedLabel {
         min-width: 30% !important;
         max-width: 30% !important;
-        // color:#414141;
         font-weight: 500;
         font-size:10px;
         text-align: right;
@@ -44,10 +42,6 @@ page-folio {
         max-width: 39% !important;
         text-align: right;
     }
-    // .item ion-avatar {
-    //     min-width: 0;
-    //     min-height: 0;
-    // }
     .nameCoins{
         padding-top: 18%;
         color: #c9c9c9;
@@ -75,9 +69,7 @@ page-folio {
     }
     .fontsize{
         font-size:13px;
-        // color:rgb(131, 131, 131);
         margin-top: 15%;
-        // font-weight: 600;
         color: #FFF;
     }
     .tableColor{
@@ -136,7 +128,6 @@ page-folio {
         width: 108%;
     }
     ion-icon {
-        // display: inline-block;
         font-size: 14px;
     }
 
@@ -169,7 +160,6 @@ page-folio {
         border-bottom-width: 2px;
         border-bottom-style: solid;
         border-bottom-color: rgba(0, 0, 0, 0.1);
-        // border-top: 1px solid rgba(0, 0, 0, 0.21);
         font-size: 11px;
         font-weight: 900;
         line-height: 3rem;

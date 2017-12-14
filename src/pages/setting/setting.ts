@@ -20,7 +20,6 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class SettingPage {
   @ViewChild(Content) content: Content
-  // checkedFiger: boolean;
   statusToggle: boolean;
   status:any;
 
@@ -29,7 +28,6 @@ export class SettingPage {
               private EmailComposer:EmailComposer,
               public navCtrl: NavController, 
               public navParams: NavParams){
-      // this.statusToggle = this.provider.fingerprint;
     this.provider.getFingerprint().then(data => {
       this.statusToggle = data;
       console.log('Log'+this.statusToggle)
@@ -60,7 +58,6 @@ export class SettingPage {
     this.statusToggle = !this.statusToggle;
     console.log(this.statusToggle +" / "+typeof this.statusToggle)
     console.log(this.status)
-    // this.provider.fingerprint = this.statusToggle;
     this.provider.setFingerprint(this.statusToggle);
     this.provider.fingerprintPassIntime=false;
     this.content.resize();

@@ -92,15 +92,10 @@ export class CoinsDetailPage {
 
           if (this.coins[i].pairing_id == this.crypto.pairing_id) {
             let coinsbox = this.coins[i];
-            // console.dir('this.crypto.pairing_id: ' + this.crypto.pairing_id);
-            // console.dir('index in coins >>: ' + i);
-            // console.dir('coinsbox >>> ' + coinsbox.priceofday[0].price)
-
             for (let j = 0; j < coinsbox.priceofday.length; j++) {
               console.dir(' coinsbox.priceofday: ' + coinsbox.priceofday[j].price);
               this.priceOfDay.push(+coinsbox.priceofday[j].price);
               this.nameCoin = coinsbox.secondary_currency;
-              // console.dir('DDDD: ' + this.priceOfDay);
             }
           }
 
@@ -122,20 +117,12 @@ export class CoinsDetailPage {
         console.log(typeof this.hightBid)
         this.hightAsk = (+this.asks.highbid)
 
-
-        // console.log('this.volumeBid:' + this.volumeBid + ' typeof:' + typeof this.volumeBid)
-
         this.volumeBid = this.decimalFormat(this.volumeBid);
         this.volumeAsk = this.decimalFormat(this.volumeAsk);
         this.hightBid = this.decimalFormat(this.hightBid);
         this.hightAsk = this.decimalFormat(this.hightAsk);
 
-        // console.log('this.volumeBid:' + this.volumeBid + ' typeof:' + typeof this.volumeBid)
-
-
       })
-
-
   }
 
   openMenu() {
@@ -151,33 +138,13 @@ export class CoinsDetailPage {
             actionSheet.dismiss().then(() => {
               this.screenShot();
             });
-            // actionSheet.onDidDismiss(()=>{
-            //   this.screenShot();
-            // })
-            // setTimeout(() => {
-            // this.screenShot();
-            // }, 900);
-
-            //this.screenShot();
+            
           }
         },
-        // {
-        //   text: 'Share With Email',
-        //   icon: 'share',
-        //   handler: () => {
-        //     setTimeout(() => {
-        //       this.screenShotURIShareWithEmail();
-        //     }, 900);
-
-        //   }
-        // },
         {
           text: 'Share With Facebook',
           icon: 'share',
           handler: () => {
-            // setTimeout(() => {
-            //   this.screenShotURIShareWithFacebook();
-            // }, 900);
             actionSheet.dismiss().then(() => {
               this.screenShotURIShareWithFacebook();
             });
@@ -197,26 +164,11 @@ export class CoinsDetailPage {
       ]
     });
     actionSheet.present();
-    // actionSheet.onDidDismiss(data => {
-    //   console.log('data : '+data)
-    //   if (data == 'Screenshot'){
-    //     this.screenShot();
-    //   } else if (data == 'shareFacebook'){
-    //     this.screenShotURIShareWithFacebook();
-    //   }
-    // });
   }
-
-
-
-
-
 
   goBack() {
     this.navCtrl.pop();
-    // this.navCtrl.push(CoinsDetailPage,crypto);
   }
-
 
   reset() {
     var self = this;
@@ -229,12 +181,14 @@ export class CoinsDetailPage {
       this.screen = res.URI;
       let photo = this.screen;
       this.state = true;
+      // this.socialSharing.shareViaFacebook('By CoinFolio', res.URI, res.URI);
+      this.socialSharing.canShareVia('facebook', '', 'By CoinFolio', res.URI, res.URI).then(() => {
+        this.socialSharing.shareViaFacebook('By CoinFolio', res.URI, res.URI);
+      }).catch(()=>{
+        alert('Can not share Facebook')
+      });
       this.reset();
-      this.socialSharing.shareViaFacebook('By CoinFolio', res.URI, res.URI);
     });
-
-    // this.socialSharing.shareViaFacebook("By CoinFolio", null,null);
-
   }
 
   screenShotURIShareWithEmail() {
@@ -243,12 +197,10 @@ export class CoinsDetailPage {
       let photo = this.screen;
       this.state = true;
       this.reset();
-      //this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, res.filePath);
-
-
-
     });
-    this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, this.screen);
+    this.socialSharing.canShareVia('facebook').then(() => {
+      this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, this.screen);
+    })
   }
 
   screenShot() {
@@ -256,7 +208,6 @@ export class CoinsDetailPage {
       this.screen = res.filePath;
       this.state = true;
       this.reset();
-      // this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, res.filePath);
     });
     let alert = this.alertCtrl.create({
       subTitle: '   Save Photo Success!!',
@@ -284,9 +235,6 @@ export class CoinsDetailPage {
   }
 
   showGraph(data) {
-    // ----
-
-
     Highcharts.createElement('link', {
       href: 'https://fonts.googleapis.com/css?family=Unica+One',
       rel: 'stylesheet',

@@ -46,9 +46,6 @@ export class DatacoinProvider {
     
     this.mixNameCoins();
     
-    // this.setUserLogin('')
-    // this.setDataTutorial(false)
-    // this.setFingerprint(false)
     this.storage.ready().then(() => {
       this.storage.get('userLogin').then((data) => {
         console.log('userLogin Provider')
@@ -59,18 +56,6 @@ export class DatacoinProvider {
         }
       });
     });
-
-    // this.storage.ready().then(() => {
-    //   this.storage.get('Fingerprint').then((data) => {
-    //     console.log('Fingerprint Provider')
-    //     console.dir(data);
-    //     if (data) {
-    //       this.fingerprint = data;
-    //       console.log('fingerprint = ' + this.fingerprint)
-    //     }
-    //   });
-    // });
-
   }
 
   //Finger

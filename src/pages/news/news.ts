@@ -20,10 +20,7 @@ import { DatacoinProvider, newsData, newsDataDetail } from '../../providers/data
 })
 export class NewsPage {
   news: any = '';
-  // status: any;
-  // feed: feeds[];
   items: newsDataDetail[] = [];
-  // data: newsDataDetail[];
   isSelect: boolean;
 
   title: any;
@@ -66,7 +63,6 @@ export class NewsPage {
 
 
       })
-    // }, 1000);
     this.isSelect = false;
     this.isSelect = false;
   }

@@ -27,8 +27,6 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-  // rootPage: any = FolioPage;
-  // rootPage: any = TutorialPage;
   activeMenu: string;
   username: any = '';
   test: any = '';
@@ -97,15 +95,6 @@ export class MyApp {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyApp');
-    // this.username = this.provider.getUsername();
-    // console.log('Username: '+this.username);
-    // if (this.username == '') {
-    //   this.test2 = 'null';
-    // } else {
-    //   this.test2 = this.username;
-    // }
-    // console.log('Test: ' + this.test);
-
   }
 
   initializeApp() {
@@ -149,8 +138,6 @@ export class MyApp {
         this.nav.setRoot(page.component);
       }
     })
-    // this.nav.setRoot(page.component);
-
   }
 
   logout() {
@@ -163,8 +150,6 @@ export class MyApp {
 
   login() {
     this.nav.push(LoginPage);
-
-
   }
 
   ngOnInit() {
@@ -175,17 +160,6 @@ export class MyApp {
     this.content.resize();
     console.log('ionViewWillEnter : ' + this.username)
   }
-
-
-  // doRefresh(refresher) {
-  //   console.log("5555555");
-  //   setTimeout(() => {
-  //     this.content.resize();
-  //     refresher.complete();
-  //     console.log('refresher')
-  //     console.log('USername refresh: '+this.username)
-  //   }, 500);
-  // }
 
   changeLogoutMenuControl() {
     this.activeMenu = "notLogin"

@@ -3,7 +3,6 @@ page-edit-transaction {
     .content{
         color: #FFFFFF;
         background-color: #151A1D;
-        // background-color: #05191d;
         font-size:16px;
     }
     .item-md [item-left], .item-md [item-right], .item-md [item-start], .item-md [item-end] {
@@ -34,8 +33,6 @@ page-edit-transaction {
         min-width: 50% !important;
         max-width: 50% !important;
         text-align: right;
-        // font-size: 16px;
-        // font-weight: 700;
     }
     .fixedLeft{
         min-width: 47.5% !important;
@@ -50,19 +47,10 @@ page-edit-transaction {
         margin:-3px;
     }
 
-
-    // .list .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
-    //     border-bottom: 0px #F0B808;
-    //     box-shadow: inset 0 -1px 0 0 #262C33;
-    // }
-
     ion-input{
         text-align: right
     }
-    .datetimeColor{
-        // color: rgb(136,168,39) !important;
-        // background: rgb(136,168,39) !important;
-    }
+
     .buttonSave{
         background-color: #F0B808;
         color: #262D33;
@@ -73,60 +61,8 @@ page-edit-transaction {
         width: 10%;
         height: 10%;
     }
-    // .item ion-select  {
-    //     padding-left: 16px;
-    //     padding-right: 0;
-    //     position: relative;
-    //     font-size: 1.6rem;
-    //     font-weight: normal;
-    //     text-transform: none;
-    //     color: #FFF;
-    //     background-color: #111314;
-    //     -webkit-box-shadow: none;
-    //     box-shadow: none;
-    //     -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    //     transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    // }
-
-//     .radio .radio-checked {
-//         border-color: #F0B90B !important; 
-//     }
-
-//     .radio .radio-icon {
-//         left: 0;
-//         top: 0;
-//         margin: 0;
-//         border-radius: 50%;
-//         position: relative;
-//         display: block;
-//         width: 16px;
-//         height: 16px;
-//         border-width: 2px;
-//         border-style: solid;
-//         border-color: #F0B90B !important;
-//     }
-
-//     .radio .radio-inner {
-//     left: 2px;
-//     top: 2px;
-//     border-radius: 50%;
-//     position: absolute;
-//     width: 8px;
-//     height: 8px;
-//     background-color: #F0B808 !important;
-//     -webkit-transform: scale3d(0, 0, 0);
-//     transform: scale3d(0, 0, 0);
-//     -webkit-transition: -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
-//     transition: -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
-//     transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
-//     transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
-// }
-
     .item.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
         border-bottom-color: #F0B90B;
         box-shadow: inset 0 -1px 0 0 #1B1E21;
     }
-
-
-
 }

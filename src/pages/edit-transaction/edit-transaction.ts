@@ -52,13 +52,6 @@ export class EditTransactionPage {
     },
       error => { console.log("error: " + error); },
       () => { console.dir(this.static) });
-
-    // this.editTransactionForm.value.quantity = +this.editTransactionForm.value.quantity
-    // this.editTransactionForm.value.tradePrice = +this.editTransactionForm.value.tradePrice
-    
-    // console.log(`this.editTransactionForm.quantity=${this.editTransactionForm.value.quantity}/${typeof this.editTransactionForm.value.quantity}`)
-    // console.log(`this.editTransactionForm.tradePrice=${this.editTransactionForm.value.tradePrice}/${typeof this.editTransactionForm.value.tradePrice}`)
-    
   }
 
   chooseDate() {

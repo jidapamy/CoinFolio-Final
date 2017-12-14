@@ -2,7 +2,6 @@ page-details {
     .content{
         color: #FFFFFF;
         background-color: #151A1D;
-        // background-color: #05191d;
         font-size:16px;
     }
     .BackgroundColorcoins{
@@ -26,8 +25,6 @@ page-details {
     }
    
     .fixedRight{
-        // min-width: 52% !important;
-        // max-width: 52% !important;
         text-align: right;
         padding-right:-50px;
     }
@@ -107,19 +104,7 @@ page-details {
         margin-top: 8px;
         margin-bottom: 3px;
     }
-    .dateSummary{
-
-    }
-   
-    // .fixedRight{
-    //     min-width: 50% !important;
-    //     max-width: 50% !important;
-    //     text-align: right;
-        
-    // }
     .fixedLeft{
-        // min-width: 47.5% !important;
-        // max-width: 47.5% !important;
         text-align: left;
     }
 
@@ -170,30 +155,9 @@ page-details {
         border-bottom: 0px solid rgba(222, 222, 222, 0.09);
     }
     
-    // ion-item:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
-
-    // .list ion-item-options:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
     .list ion-item-sliding:nth-child(2n+2) {
         background-color: rgba(38, 44, 51, 0.26) !important;
     }
-
-    //  .list ion-item:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
 
     .button-inner {
         width: 122%;
@@ -209,29 +173,10 @@ page-details {
         border-bottom: 0px solid #dedede;
     }
 
-    // .scroll-content {
-    //     left: 0;
-    //     right: 0;
-    //     top: 0;
-    //     bottom: 0;
-    //     position: absolute;
-    //     z-index: 1;
-    //     display: block;
-    //     overflow-x: hidden;
-    //     overflow-y: scroll;
-    //     -webkit-overflow-scrolling: touch;
-    //     will-change: scroll-position;
-    //     contain: size style layout;
-    //     margin-right: -4%;
-    // }
-   
-
     .list {
-        // margin-left: -5%;
-        // margin-top: -4%;
         min-width: 100% !important;
-    max-width: 100% !important;
-    text-align: left;
+        max-width: 100% !important;
+        text-align: left;
     }
 
 
@@ -270,7 +215,6 @@ page-details {
     }
 
     ion-icon {
-        // display: inline-block;
         font-size: 21px;
     }
 
@@ -298,6 +242,4 @@ page-details {
         flex-direction: column;
         font-size: 15px;
     }
-
-    
 }

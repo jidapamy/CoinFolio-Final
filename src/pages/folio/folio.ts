@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Content, ItemSliding } from 'ionic-angular';
 import { DatacoinProvider, cryptoCurrency, crypto } from '../../providers/datacoin/datacoin';
 import { EditTransactionPage } from '../edit-transaction/edit-transaction';
-// import { AlertPage } from '../alert/alert';
 import { DetailsPage } from '../details/details';
 import { AlertController } from 'ionic-angular';
 
@@ -70,11 +69,6 @@ export class FolioPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FolioPage');
   }
-
-  // goToAlert(slidingItem: ItemSliding, crypto: any) {
-  //   this.navCtrl.push(AlertPage, crypto);
-  //   slidingItem.close();
-  // }
 
   openDetailsPage(crypto) {
     this.navCtrl.push(DetailsPage, crypto)

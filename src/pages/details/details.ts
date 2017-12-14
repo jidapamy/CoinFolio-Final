@@ -177,11 +177,11 @@ export class DetailsPage {
       this.screen = res.URI;
       let photo = this.screen;
       this.state = true;
-      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
+      this.socialSharing.shareViaFacebook('By CoinFolio', res.URI, res.URI);
       this.reset();
-     
     });
   }
+
   screenShotURIShareWithEmail() {
     this.screenshot.save('jpg', 80).then(res => {
       this.screen = res.filePath;

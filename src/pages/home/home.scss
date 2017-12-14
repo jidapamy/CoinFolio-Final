@@ -25,22 +25,14 @@ page-home {
     .content{
         color: #FFFFFF;
         background-color: #151A1D;
-        // background-color: #05191d;
         font-size:16px;
     }
 
     .frontFixedLabel {
         min-width: 67% !important;
         max-width: 67% !important;
-        // color:rgb(255, 255, 255);
         font-weight: 500;
     }
-    // .frontFixedLabel >p,
-    // .endFixedLabel >p{
-    //     color:rgb(237, 235, 235);
-    //     // font-weight: 500;
-    // } 
-
     .aboveFixedLabel{
         color:rgb(131, 131, 131);
         font-weight: 800;
@@ -117,29 +109,9 @@ page-home {
         border-bottom: 0px solid rgba(222, 222, 222, 0.09);
     }
     
-    // ion-item:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
-
-    // .list ion-item-options:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
     .list ion-item-sliding:nth-child(2n+2) {
         background-color: rgba(38, 44, 51, 0.26) !important;
     }
-
-    //  .list ion-item:nth-child(2n+2) {
-    //     // background-color: rgba(255, 0, 0, 0.26) !important;
-        
-    //     background-color: rgba(38, 44, 51, 0.26) !important;
-    // }
-
 
     .button-inner {
         width: 122%;
@@ -155,28 +127,10 @@ page-home {
         border-bottom: 0px solid #dedede;
     }
 
-    // .scroll-content {
-    //     left: 0;
-    //     right: 0;
-    //     top: 0;
-    //     bottom: 0;
-    //     position: absolute;
-    //     z-index: 1;
-    //     display: block;
-    //     overflow-x: hidden;
-    //     overflow-y: scroll;
-    //     -webkit-overflow-scrolling: touch;
-    //     will-change: scroll-position;
-    //     contain: size style layout;
-    //     margin-right: -4%;
-    // }
-
-
     .list {
         margin-left: -5%;
         margin-top: -4%;
     }
-
 
     ion-list {
         margin: 0;
@@ -213,7 +167,6 @@ page-home {
     }
 
     ion-icon {
-        // display: inline-block;
         font-size: 21px;
     }
 

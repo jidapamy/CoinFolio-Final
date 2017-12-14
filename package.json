@@ -34,7 +34,7 @@
     "com.darktalker.cordova.screenshot": "^0.1.6",
     "cordova-android": "6.3.0",
     "cordova-browser": "^5.0.1",
-    "cordova-ios": "^4.5.4",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.0",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-email-composer": "^0.8.11",
@@ -76,9 +76,9 @@
       "cordova-plugin-x-socialsharing": {}
     },
     "platforms": [
-      "android",
+      "browser",
       "ios",
-      "browser"
+      "android"
     ]
   }
 }

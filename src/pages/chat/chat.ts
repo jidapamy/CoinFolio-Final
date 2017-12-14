@@ -151,11 +151,4 @@ export class ChatPage {
 			console.log(this.errorMessage)
 		}
 	}
-
-	// ngOnInit() {
-	// 	this.provider.getUserLogin().then(data => {
-	// 		this.username = data.username;
-	// 		this.content.resize();
-	// 	});
-	// }
 }

@@ -47,16 +47,6 @@
         <ion-label class="fixedRight"><img class="imgSize" src="https://d2v7vc3vnopnyy.cloudfront.net/img/coins/{{crypto.coin.secondary_currency}}.png"
           />&nbsp;&nbsp;{{crypto.coin.secondary_currency }}</ion-label>
       </ion-item>
-      <!-- <ion-item>
-        <ion-label class="fixedLeft">
-          Trade Price <br>
-          <span style="font-size: 10px;color: #e13838;">{{errorTradePrice}}</span>
-        </ion-label>
-        <ion-input *ngIf="transaction.status!='Watch'" [(ngModel)]="price" class="fixedRight" item-right type="number" value="{{transaction.tradePrice}}"
-          placeholder="{{transaction.tradePrice}}" (keyup)="calPrice($event,'price')" formControlName="tradePrice" ></ion-input>
-        <ion-input *ngIf="transaction.status=='Watch'" class="fixedRight" disabled item-right type="number" value="{{transaction.tradePrice}}"
-          placeholder="{{transaction.tradePrice}}" formControlName="tradePrice"></ion-input>
-      </ion-item> -->
       <ion-item>
         <ion-label class="fixedLeft">
           Trade Price <br>
@@ -80,7 +70,6 @@
       <ion-item>
         <ion-label class="fixedLeft">Total Value</ion-label>
         <ion-label class="fixedRight">{{total}}</ion-label>
-        <!-- <ion-label class="fixedRight">{{total}}</ion-label> -->
       </ion-item>
     </ion-list>
     <ion-list>
