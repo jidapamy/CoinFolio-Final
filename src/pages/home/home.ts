@@ -111,23 +111,18 @@ export class HomePage {
   }
 
   goToAddTransaction(slidingItem: ItemSliding, crypto: any): void {
-    let modal = this.modalCtrl.create(AddTransactionPage, crypto);
-    if (this.user != '') {
+    console.log(this.user);
+    console.dir(this.user);
+    let modal = this.modalCtrl.create(AddTransactionPage, crypto);  // go to login for user not login
+    if (this.user == undefined){
+      this.navCtrl.push(LoginPage);
+    }else{
       modal.present();
-    } else {
-      this.navCtrl.push(LoginPage); // go to login for user not login
     }
     slidingItem.close();
   }
 
   ngOnInit() {
-    //   this.provider.getUserLogin().then(data => {
-    //     this.user = data;
-    //     this.content.resize();
-    //     console.log('ngOnInit')
-    //     console.dir(this.user)
-    //   })
-
     let intervel = setInterval(() => {        // fetch data BXCoin API
       if (this.cryptoTotal.length == 0) {
         this.cryptoTotal = this.provider.getBxCoin();
@@ -182,25 +177,5 @@ export class HomePage {
         this.navCtrl.setRoot(FolioPage);
       }
     })
-
-    // this.navCtrl.setRoot(FolioPage);
-
   }
-
-  // reset() {
-  //   var self = this;
-  //   setTimeout(function () {
-  //     self.state = false;
-  //   }, 1000);
-  // }
-
-  // screenShot() {
-  //   this.screenshot.save('jpg', 80).then(res => {
-  //     this.screen = res.filePath;
-  //     this.state = true;
-  //     this.reset();
-  //   });
-  // }
-
-
 }

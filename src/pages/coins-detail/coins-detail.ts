@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { DatacoinProvider, tempStatisticsCoinsDetail, tempStatisticsCoins, tempbookorderBidItem, tempbookorderBid, tempbookorder, cryptoCurrency} from '../../providers/datacoin/datacoin';
+import { DatacoinProvider, tempStatisticsCoinsDetail, tempStatisticsCoins, tempbookorderBidItem, tempbookorderBid, tempbookorder, cryptoCurrency } from '../../providers/datacoin/datacoin';
 import Highcharts from 'highcharts/highstock';
 import * as HighCharts from 'highcharts';
 import { Pipe, PipeTransform } from '@angular/core';
@@ -31,13 +31,13 @@ export class CoinsDetailPage {
   dataInicial: Date = new Date();;
   test: any;
   asksDetail: any[] = [];
-  orderbook:any;
-  bids:any;
-  asks:any;
-  
-  volumeBid:any;
+  orderbook: any;
+  bids: any;
+  asks: any;
+
+  volumeBid: any;
   volumeAsk: any;
-  hightBid:any;
+  hightBid: any;
   hightAsk: any;
 
   dateTimes: string;
@@ -58,14 +58,14 @@ export class CoinsDetailPage {
     private socialSharing: SocialSharing,
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController,
-    private screenshot: Screenshot,public navCtrl: NavController,
-     public navParams: NavParams, public provider: DatacoinProvider) {
+    private screenshot: Screenshot, public navCtrl: NavController,
+    public navParams: NavParams, public provider: DatacoinProvider) {
 
     let paramType = this.navParams.get('type');
-    
-    if(paramType == 'home'){
+
+    if (paramType == 'home') {
       this.crypto = this.navParams.get('crypto')
-    }else{
+    } else {
       this.crypto = this.navParams.get('crypto').cryptoCurrency
       this.crypto.primary_currency = this.navParams.get('crypto').myCoins.coin.primary_currency
     }
@@ -75,7 +75,7 @@ export class CoinsDetailPage {
     this.orderbook = this.crypto.orderbook;
     this.bids = this.orderbook.bids;
     this.asks = this.orderbook.asks;
-    
+
     //date format Ex.2017-10-19
     this.dateTimes = this.dataInicial.getFullYear() + '-' + this.dataInicial.getMonth() + '-' + this.dataInicial.getDate()
 
@@ -114,10 +114,10 @@ export class CoinsDetailPage {
 
 
         this.volumeBid = (+this.bids.volume)
-        console.log(typeof this.volumeBid )
+        console.log(typeof this.volumeBid)
         this.volumeAsk = (+this.asks.volume)
         console.log(typeof this.volumeAsk)
-        
+
         this.hightBid = (+this.bids.highbid)
         console.log(typeof this.hightBid)
         this.hightAsk = (+this.asks.highbid)
@@ -134,10 +134,10 @@ export class CoinsDetailPage {
 
 
       })
-  
+
 
   }
-  
+
   openMenu() {
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Screenshot',
@@ -146,31 +146,67 @@ export class CoinsDetailPage {
         {
           text: 'Save to Gallery',
           role: 'destructive',
-          icon: 'albums' ,
+          icon: 'albums',
           handler: () => {
-            this.screenShot();
+            actionSheet.dismiss().then(() => {
+              this.screenShot();
+            });
+            // actionSheet.onDidDismiss(()=>{
+            //   this.screenShot();
+            // })
+            // setTimeout(() => {
+            // this.screenShot();
+            // }, 900);
+
+            //this.screenShot();
           }
         },
+        // {
+        //   text: 'Share With Email',
+        //   icon: 'share',
+        //   handler: () => {
+        //     setTimeout(() => {
+        //       this.screenShotURIShareWithEmail();
+        //     }, 900);
+
+        //   }
+        // },
         {
-          text: 'Share With Email',
+          text: 'Share With Facebook',
           icon: 'share',
           handler: () => {
-            this.screenShotURIShareWithEmail();
+            // setTimeout(() => {
+            //   this.screenShotURIShareWithFacebook();
+            // }, 900);
+            actionSheet.dismiss().then(() => {
+              this.screenShotURIShareWithFacebook();
+            });
           }
         },
         {
           text: 'Cancel',
           role: 'cancel', // will always sort to be on the bottom
-          icon: 'close' ,
+          icon: 'close',
           handler: () => {
-            console.log('Cancel clicked');
+            setTimeout(() => {
+              console.log('Cancel clicked');
+            }, 900);
+
           }
         }
       ]
     });
     actionSheet.present();
+    // actionSheet.onDidDismiss(data => {
+    //   console.log('data : '+data)
+    //   if (data == 'Screenshot'){
+    //     this.screenShot();
+    //   } else if (data == 'shareFacebook'){
+    //     this.screenShotURIShareWithFacebook();
+    //   }
+    // });
   }
-  
+
 
 
 
@@ -179,7 +215,6 @@ export class CoinsDetailPage {
   goBack() {
     this.navCtrl.pop();
     // this.navCtrl.push(CoinsDetailPage,crypto);
-
   }
 
 
@@ -189,14 +224,31 @@ export class CoinsDetailPage {
       self.state = false;
     }, 1000);
   }
+  screenShotURIShareWithFacebook() {
+    this.screenshot.URI(80).then(res => {
+      this.screen = res.URI;
+      let photo = this.screen;
+      this.state = true;
+      this.reset();
+      this.socialSharing.shareViaFacebook('By CoinFolio', res.URI, res.URI);
+    });
+
+    // this.socialSharing.shareViaFacebook("By CoinFolio", null,null);
+
+  }
+
   screenShotURIShareWithEmail() {
     this.screenshot.URI(80).then(res => {
       this.screen = res.URI;
+      let photo = this.screen;
       this.state = true;
       this.reset();
-      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
+      //this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, res.filePath);
+
+
+
     });
-    
+    this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, this.screen);
   }
 
   screenShot() {
@@ -204,32 +256,23 @@ export class CoinsDetailPage {
       this.screen = res.filePath;
       this.state = true;
       this.reset();
+      // this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, res.filePath);
     });
     let alert = this.alertCtrl.create({
-
       subTitle: '   Save Photo Success!!',
-
     });
 
+    alert.present()
     setTimeout(() => {
-      alert.present().then(() => {
-        setTimeout(() => {
-          alert.dismiss();
-
-        }, 1500);
-      }).catch(() => {
-        alert.dismiss();
-      });
-    }, 0);
-
+      alert.dismiss();
+    }, 1500);
   }
-  
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad")
   }
 
-  decimalFormat(param){
+  decimalFormat(param) {
     console.log('fecimal')
     if (param < 1) {
       param = param.toFixed(8);

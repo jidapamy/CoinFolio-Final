@@ -136,14 +136,18 @@ export class DetailsPage {
           role: 'destructive',
           icon: 'albums',
           handler: () => {
-            this.screenShot();
+            setTimeout(() => {
+              this.screenShot();
+            }, 900);
           }
         },
         {
-          text: 'Share With Email',
+          text: 'Share With Facebook',
           icon: 'share',
           handler: () => {
-            this.screenShotURIShareWithEmail();
+            setTimeout(() => {
+              this.screenShotURIShareWithFacebook();;
+            }, 900);
           }
         },
         {
@@ -151,7 +155,10 @@ export class DetailsPage {
           role: 'cancel', // will always sort to be on the bottom
           icon: 'close',
           handler: () => {
-            console.log('Cancel clicked');
+            setTimeout(() => {
+              console.log('Cancel clicked');
+            }, 900);
+            
           }
         }
       ]
@@ -164,20 +171,46 @@ export class DetailsPage {
       self.state = false;
     }, 1000);
   }
-  screenShotURIShareWithEmail() {
+
+  screenShotURIShareWithFacebook() {
     this.screenshot.URI(80).then(res => {
       this.screen = res.URI;
+      let photo = this.screen;
+      this.state = true;
+      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
+      this.reset();
+     
+    });
+  }
+  screenShotURIShareWithEmail() {
+    this.screenshot.save('jpg', 80).then(res => {
+      this.screen = res.filePath;
       this.state = true;
       this.reset();
-      this.socialSharing.shareViaFacebook('By CoinFolio', null, res.URI);
+      this.socialSharing.shareViaEmail('By CoinFolio', 'SceenShot', ['support40@coinfolio.com'], null, null, res.filePath);
     });
 
+    
   }
   screenShot() {
     this.screenshot.save('jpg', 80).then(res => {
       this.screen = res.filePath;
       this.state = true;
       this.reset();
+      
+    });
+    let alert = this.alertCtrl.create({
+      
+      subTitle: '   Save Photo Success!!',
+    });
+
+    alert.present().then(() => {
+      setTimeout(() => {
+        alert.dismiss();
+
+      }, 800);
+    }).catch(() => {
+      alert.dismiss();
     });
   }
   gotoGraph(){
