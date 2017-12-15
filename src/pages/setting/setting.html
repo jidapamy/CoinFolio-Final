@@ -21,9 +21,9 @@
     <ion-item (click)="goToFeedback()">Feedback</ion-item>
     <ion-item (click)="goToPrivacy()">Terms Of Use & Privacy</ion-item>
     <ion-item (click)=" goToTutorail()">Replay Tutorail</ion-item>
-    <ion-item (click)="checkToggle()">
+    <ion-item>
       <ion-label style="margin: 13px 8px 13px 13px;">Fingerprint</ion-label>
-      <ion-toggle checked="{{statusToggle}}"></ion-toggle>
+      <ion-toggle [(ngModel)]="statusToggle" (ionChange)="checkToggle()"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

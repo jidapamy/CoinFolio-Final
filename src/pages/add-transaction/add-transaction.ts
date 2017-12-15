@@ -24,7 +24,7 @@ export class AddTransactionPage {
   // status: any = 'Buy';
   static: any
   price: number;
-  quantity:any;
+  quantity: any;
 
   errorQuantity: string = '';
   errorTradePrice: string = '';
@@ -62,8 +62,8 @@ export class AddTransactionPage {
   }
 
   chooseStatus() {
-    this.errorQuantity ='';
-    this.errorTradePrice= '';
+    this.errorQuantity = '';
+    this.errorTradePrice = '';
     if (this.addTransactionForm.value.status == 'Watch') {
       this.addTransactionForm.value.quantity = 0;
     }
@@ -117,7 +117,7 @@ export class AddTransactionPage {
     this.errorQuantity = '';
     console.log(this.addTransactionForm.value.quantity)
     if (this.validate()) {
-      if ((+this.addTransactionForm.value.quantity) > 0){
+      if ((+this.addTransactionForm.value.quantity) > 0) {
         let trasactionDetail = this.addTransactionForm.value;
         this.viewCtrl.dismiss();
         let calculate = this.addTransactionForm.value.tradePrice * this.addTransactionForm.value.quantity;
@@ -237,21 +237,21 @@ export class AddTransactionPage {
           this.provider.coinsKey = myCoins[myCoins.length - 1].$key
           this.provider.addTransactionAlreadyCoin(dataAddTransaction); // add transition in new Coin
         }
-      } else if ((+this.addTransactionForm.value.quantity) == 0){
+      } else if ((+this.addTransactionForm.value.quantity) == 0) {
         this.errorQuantity = '*Please fill a quantity more than 0'
       } else if ((+this.addTransactionForm.value.quantity) <= 0) {
         this.errorQuantity = '*Please fill a quantity more than 0'
       }
-      
+
     }
   }
 
   keyUp(param) {
     console.log(param)
-    if (param=='quantity'){
+    if (param == 'quantity') {
       this.errorQuantity = '';
-    } else if (param == 'price'){
-      this.errorTradePrice ='';
+    } else if (param == 'price') {
+      this.errorTradePrice = '';
     }
   }
 

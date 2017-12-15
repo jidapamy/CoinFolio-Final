@@ -14,35 +14,9 @@
 <ion-content >
   
     <ion-slides pager (ionSlideDidChange)="slideChanged()">
-      <ion-slide>
-        <img src="img/1.png" >
+      <ion-slide *ngFor="let picture of picPaths">
+        <img src="{{picture}}" >
       </ion-slide>
-
-      <ion-slide>
-        <img src="img/2.png">
-      </ion-slide>
-
-      <ion-slide>
-        <img src="img/3.png">
-      </ion-slide>
-
-      <ion-slide>
-        <img src="img/4.png">
-      </ion-slide>
-
-      <ion-slide>
-        <img src="img/5.png">
-      </ion-slide>
-
-      <ion-slide>
-        <img src="img/6.png">
-      </ion-slide>
-
-      <ion-slide>
-
-        <img src="img/7.png">
-      </ion-slide>
-
     </ion-slides>
   <button class="skips" (click)="skip()" id="skip">{{SkipMs}}</button>
 </ion-content>

@@ -28,8 +28,8 @@
 </ion-content>
 <ion-footer>
 	<ion-toolbar color="bgToolbar">
-		<p *ngIf="!userLogin" class="username" (click)="editUsername()"> <b>{{username}} </b></p>
-		<p *ngIf="userLogin" class="username"> <b>{{username}} </b></p>
+		<!-- <p *ngIf="!userLogin" class="username" (click)="editUsername()"> <b>{{username}} </b></p> -->
+		<p class="username"> <b>{{username}} </b></p>
 		<form [formGroup]="sendMessage" (ngSubmit)="saveMsg()">
 			<input placeholder="Your message.." [(ngModel)]="message" formControlName="message" />
 

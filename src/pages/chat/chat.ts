@@ -77,37 +77,37 @@ export class ChatPage {
 			this.myScrollContainer.nativeElement.scrollHeight;
 	}
 
-	editUsername() {
-		let prompt = this.alertCtrl.create({
-			title: 'Edit Username',
-			message: "Enter a new username for chatting!",
-			inputs: [
-				{
-					name: 'newUsername',
-					placeholder: 'Your Username'
-				},
-			],
-			buttons: [
-				{
-					text: 'Cancel',
-					handler: data => {
-						console.log('Cancel clicked');
-					}
-				},
-				{
-					text: 'Save',
-					handler: data => {
-						console.log('Saved clicked');
-						if (data.newUsername) {
-							this.username = data.newUsername;
-						}
-					}
-				}
-			]
-		});
+	// editUsername() {
+	// 	let prompt = this.alertCtrl.create({
+	// 		title: 'Edit Username',
+	// 		message: "Enter a new username for chatting!",
+	// 		inputs: [
+	// 			{
+	// 				name: 'newUsername',
+	// 				placeholder: 'Your Username'
+	// 			},
+	// 		],
+	// 		buttons: [
+	// 			{
+	// 				text: 'Cancel',
+	// 				handler: data => {
+	// 					console.log('Cancel clicked');
+	// 				}
+	// 			},
+	// 			{
+	// 				text: 'Save',
+	// 				handler: data => {
+	// 					console.log('Saved clicked');
+	// 					if (data.newUsername) {
+	// 						this.username = data.newUsername;
+	// 					}
+	// 				}
+	// 			}
+	// 		]
+	// 	});
 
-		prompt.present();
-	}
+	// 	prompt.present();
+	// }
 
 
 	validate(): any {

@@ -23,6 +23,7 @@ export class TutorialPage {
   key:any[];
   user:any[];
   SkipMs:string="SKIP";
+  picPaths:any[]=[];
 
   constructor(public navCtrl: NavController,
               public provider: DatacoinProvider,
@@ -32,6 +33,9 @@ export class TutorialPage {
    
     console.log('Length: '+this.usersInFirebase.length);
     this.provider.setDataTutorial(true);
+    for(let i =1;i<=7;i++){
+      this.picPaths.push('img/'+i+'.png');
+    }
   }
 
   pushKey(userKey){

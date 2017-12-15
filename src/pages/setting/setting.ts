@@ -20,9 +20,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class SettingPage {
   @ViewChild(Content) content: Content
-  statusToggle: boolean;
+  statusToggle: boolean = false;
   status:any;
-
+  
   constructor(public provider: DatacoinProvider,
               private faio: FingerprintAIO,
               private EmailComposer:EmailComposer,
@@ -55,7 +55,7 @@ export class SettingPage {
 
   } 
   checkToggle(){
-    this.statusToggle = !this.statusToggle;
+    // this.statusToggle = !this.statusToggle;
     console.log(this.statusToggle +" / "+typeof this.statusToggle)
     console.log(this.status)
     this.provider.setFingerprint(this.statusToggle);

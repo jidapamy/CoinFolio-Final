@@ -46,6 +46,9 @@ export class DatacoinProvider {
     
     this.mixNameCoins();
     
+    this.setUserLogin('')
+    this.setDataTutorial(false)
+    this.setFingerprint(false)
     this.storage.ready().then(() => {
       this.storage.get('userLogin').then((data) => {
         console.log('userLogin Provider')
@@ -53,9 +56,22 @@ export class DatacoinProvider {
         if (data) {
           this.userLogin = data.user;
           this.userKey = data.key;
+
         }
       });
     });
+
+    // this.storage.ready().then(() => {
+    //   this.storage.get('Fingerprint').then((data) => {
+    //     console.log('Fingerprint Provider')
+    //     console.dir(data);
+    //     if (data) {
+    //       this.fingerprint = data;
+    //       console.log('fingerprint = ' + this.fingerprint)
+    //     }
+    //   });
+    // });
+
   }
 
   //Finger
@@ -194,8 +210,8 @@ export class DatacoinProvider {
 
   //API
   loadBX(): Observable<crypto[]> {
-    // return this.http.get(this.apiUrl)
-    return this.http.get('bx.in.th.json')
+    return this.http.get(this.apiUrl)
+    // return this.http.get('bx.in.th.json')
       .map(response => {
         return response.json()
       });

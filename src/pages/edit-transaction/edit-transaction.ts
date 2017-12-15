@@ -15,11 +15,11 @@ import { DatacoinProvider } from '../../providers/datacoin/datacoin';
 })
 export class EditTransactionPage {
   @ViewChild(Content) content: Content
-  myDate:any;
+  myDate: any;
   editTransactionForm: FormGroup;
   transaction: any;
   crypto: any;
-  price:any;
+  price: any;
   total: any;
   static: any;
   errorQuantity: string = '';
@@ -77,10 +77,10 @@ export class EditTransactionPage {
     this.culculateTotal();
   }
 
-  culculateTotal(){
+  culculateTotal() {
     this.total = (+this.editTransactionForm.value.tradePrice) * (+this.editTransactionForm.value.quantity)
     console.log(`tradePrice: ${this.editTransactionForm.value.tradePrice} * quantity: ${this.editTransactionForm.value.quantity}`)
-    console.log(this.total +'type: '+typeof this.total)
+    console.log(this.total + 'type: ' + typeof this.total)
   }
 
   goBack() {
@@ -95,7 +95,7 @@ export class EditTransactionPage {
     }
   }
 
-  calPrice(event,param) {
+  calPrice(event, param) {
     console.log(event.target.value)
     this.culculateTotal();
     this.keyUp(param);
@@ -176,6 +176,10 @@ export class EditTransactionPage {
         } else if (statusOld == 'Sell' && statusNew == 'Watch') {
           quantityTotal = (quantityTotal + quantityOld)
           totalPrice = (totalPrice + tradePriceOld)
+        } else if ((+this.editTransactionForm.value.quantity) == 0) {
+          this.errorQuantity = '*Please fill a quantity more than 0'
+        } else if ((+this.editTransactionForm.value.quantity) <= 0) {
+          this.errorQuantity = '*Please fill a quantity more than 0'
         }
       }
 
@@ -220,7 +224,7 @@ export class EditTransactionPage {
   }
 
   editTransation() {
-    console.log('mydate : '+this.myDate)
+    console.log('mydate : ' + this.myDate)
     console.dir(this.editTransactionForm.value)
     let valueInform = this.editTransactionForm.value
 
@@ -244,5 +248,5 @@ export class EditTransactionPage {
     }
   }
 
-  
+
 }
